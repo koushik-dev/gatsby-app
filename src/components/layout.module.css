@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+}
+body {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+html, div[tabindex="-1"], #___gatsby {
+    height: 100%;
+}
+.header {
+    align-self: end;
+    background-color: beige;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.h1 {
+    padding: 1rem;
+    font-size: 3rem;
+    flex: 2;
+}
+.list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+}
+.list a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+.wrapper {
+    height: 80%;
+}
+.footer {
+    background-color: blanchedalmond;
+    padding: 10px;
+}

@@ -1,51 +1,42 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+import styles from "./layout.module.css"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            author
+          }
         }
       }
-    }
-  `)
-
+    `
+  )
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <header className={styles.header}>
+        <h1 className={styles.h1}>{data.site.siteMetadata.title}</h1>
+        <ul className={styles.list}>
+          <li>
+            <Link to="/" activeStyle={{color: 'violet'}}>Home</Link>
+          </li>
+          <li>
+            <Link to="/blog" activeStyle={{color: 'violet'}} partiallyActive="true">Blog</Link>
+          </li>
+          <li>
+            <Link to="/contact" activeStyle={{color: 'violet'}}>Contact</Link>
+          </li>
+        </ul>
+      </header>
+      <div className={styles.wrapper}>{children}</div>
+      <footer className={styles.footer}>
+        &copy;Copyrights Reserved.2020 Author{data.site.siteMetadata.author}
+      </footer>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
