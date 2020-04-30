@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
             <Link to="/" activeStyle={{color: 'violet'}}>Home</Link>
           </li>
           <li>
-            <Link to="/blog" activeStyle={{color: 'violet'}} partiallyActive="true">Blog</Link>
+            <Link to="/blog" activeStyle={{color: 'violet'}} partiallyActive={true}>Blog</Link>
           </li>
           <li>
             <Link to="/contact" activeStyle={{color: 'violet'}}>Contact</Link>

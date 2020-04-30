@@ -7,8 +7,8 @@ const blog = ({ data }) => {
     return (
         <Layout>
             <div>
-            {data.allMarkdownRemark.edges.map(edge => (
-                <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
+            {data.allMarkdownRemark.edges.map((edge, i) => (
+                <Link key={i} to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
             ))}
             </div>
         </Layout>
